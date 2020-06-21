@@ -2,6 +2,7 @@ import { promises, createWriteStream } from 'fs';
 import { dirname, resolve } from 'path';
 
 import express from 'express';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import { createLogger } from 'bunyan';
 import { connect, plugin } from 'mongoose';
 import { accessibleRecordsPlugin } from '@casl/mongoose';
@@ -73,10 +74,14 @@ plugin(accessibleRecordsPlugin);
   server.use(DecisionTree(logger));
 
   require('./api').default(server, pkg.config, logger);
-  // const userController = UserController();
 
-  // server.post("/user", userController.create);
-  // server.get("/user/:userId", userController.confirm);
+  server.use(
+    '/',
+    createProxyMiddleware({
+      target: 'http://localhost:3000',
+      ws: true,
+    })
+  );
 
   server.listen(serverPort, () => {
     logger.info('%s listening at port %s', name, serverPort);

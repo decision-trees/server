@@ -1,8 +1,10 @@
 import Logger from 'bunyan';
 import { Request, Response, NextFunction } from 'express';
 
-import { MongoDBEntityProvider } from '@decision-trees/mongodb/lib/MongoDBEntityProvider';
-import { MongoDBSessionProvider } from '@decision-trees/mongodb/lib/MongoDBSessionProvider';
+import {
+  MongoDBEntityProvider,
+  MongoDBSessionProvider,
+} from '@decision-trees/mongodb';
 
 import { Request as UtilsRequest } from '../utils/express';
 

@@ -32,6 +32,7 @@
       "name": "decision-tree",
       "options": {
         "useNewUrlParser": true,
+        "useUnifiedTopology:": true,
         "auth": {
           "user": "root"
         }
@@ -45,7 +46,7 @@
     "@casl/ability": "^4.0.8",
     "@casl/mongoose": "^3.0.2",
     "@decision-trees/core": "0.0.1",
-    "@decision-trees/mongodb": "0.0.1",
+    "@decision-trees/mongodb": "0.0.3",
     "body-parser": "^1.19.0",
     "bunyan": "^1.8.12",
     "compression": "^1.7.4",
@@ -71,6 +72,7 @@
     "@types/passport": "^1.0.3",
     "@types/passport-jwt": "^3.0.3",
     "@types/uuid": "^8.0.0",
+    "http-proxy-middleware": "^1.0.4",
     "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
