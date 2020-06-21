@@ -75,13 +75,17 @@ plugin(accessibleRecordsPlugin);
 
   require('./api').default(server, pkg.config, logger);
 
-  server.use(
-    '/',
-    createProxyMiddleware({
-      target: 'http://localhost:3000',
-      ws: true,
-    })
-  );
+  if (isProduction) {
+    server.use('/', express.static('public'));
+  } else {
+    server.use(
+      '/',
+      createProxyMiddleware({
+        target: 'http://localhost:3000',
+        ws: true,
+      })
+    );
+  }
 
   server.listen(serverPort, () => {
     logger.info('%s listening at port %s', name, serverPort);
